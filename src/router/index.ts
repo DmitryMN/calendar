@@ -4,8 +4,7 @@ import { Event } from "../pages/Event";
 
 export interface IRoute {
     path: string;
-    component: React.ComponentType;
-    exact?: boolean;
+    element: React.ComponentType;
 }
 
 export enum RouteNames {
@@ -14,8 +13,14 @@ export enum RouteNames {
 }
 
 export const publicRoutes: Array<IRoute> = [
-    {path: RouteNames.LOGIN, component: Login, exact: true},
+    { 
+        path: RouteNames.LOGIN,
+        element: Login, 
+    },
 ];
 export const privateRoutes: Array<IRoute> = [
-    {path: RouteNames.EVENT, component: Event, exact: true},
+    { 
+        path: RouteNames.EVENT,
+        element: Event, 
+    },
 ];
