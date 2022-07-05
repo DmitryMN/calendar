@@ -1,23 +1,26 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { Login } from '../pages/Login';
-import { publicRoutes, privateRoutes } from '../router/index';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { publicRoutes, privateRoutes, RouteNames } from '../router/index';
 
-export const AppRouter = () => {
+const AppRouter = () => {
     const isAuth = true;
 
     return (
         isAuth ? 
         <Routes>
             {
-                publicRoutes.map(route => <Route path={route.path} element={<route.element />} />)
+                privateRoutes.map(route => <Route key={route.path} path={route.path} element={<route.element />}/>)
             }
+            <Route path='*' element={<Navigate replace to={RouteNames.EVENT}/>}/>
         </Routes>
         :
         <Routes>
             {
-                privateRoutes.map(route => <Route path={route.path} element={<route.element />}/>)
+                publicRoutes.map(route => <Route key={route.path} path={route.path} element={<route.element />} />)
             }
+            <Route path='*' element={<Navigate replace to={RouteNames.LOGIN}/>}/>
         </Routes>
     );
 }
+
+export default AppRouter;
