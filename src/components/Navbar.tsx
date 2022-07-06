@@ -3,10 +3,11 @@ import { Header } from 'antd/lib/layout/layout';
 import { Menu, Row } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { RouteNames } from '../router';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
-    const auth = true;
+    const {isAuth} = useTypedSelector(state => state.isAuth);
 
     const handler = () => {
         navigate(RouteNames.EVENT, { replace: true });
@@ -16,7 +17,7 @@ const Navbar: React.FC = () => {
         <Header>
             <Row justify="end">
                 {
-                    auth
+                    isAuth
                         ?
                         <>
                             <div style={{color: "white"}}>M DM</div>
