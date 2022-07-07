@@ -4,13 +4,17 @@ import { Menu, Row } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { RouteNames } from '../router';
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { changeIsAuth } from '../store/reducers/auth';
+import { useDispatch } from 'react-redux';
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
-    const {isAuth} = useTypedSelector(state => state.isAuth);
+    const { isAuth } = useTypedSelector(state => state.isAuth);
+    const dispatch = useDispatch();
 
     const handler = () => {
         navigate(RouteNames.EVENT, { replace: true });
+        dispatch(changeIsAuth(true));
     }
 
     return (
@@ -20,7 +24,7 @@ const Navbar: React.FC = () => {
                     isAuth
                         ?
                         <>
-                            <div style={{color: "white"}}>M DM</div>
+                            <div style={{ color: "white" }}>M DM</div>
                             <Menu mode="horizontal" theme="dark" selectable={false}>
                                 <Menu.Item key="login" onClick={() => { console.log("out") }}>Выйти</Menu.Item>
                             </Menu>

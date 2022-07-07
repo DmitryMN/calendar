@@ -2,7 +2,7 @@ import { AuthState, ACTIONS_TYPE, ActionsTypes } from "./types";
 
 
 const initialState: AuthState = {
-    isAuth: false
+    isAuth: false,
 }
 
 export default function authReducer(state = initialState, action: ActionsTypes): AuthState {
@@ -14,4 +14,4 @@ export default function authReducer(state = initialState, action: ActionsTypes):
     }
 }
 
-const changeIsAuth = (isAuth: boolean) => ({type: ACTIONS_TYPE.IS_AUTH, payload: {isAuth}});
+export const changeIsAuth = (isAuth: boolean) => ({type: ACTIONS_TYPE.IS_AUTH, payload: {isAuth}});
