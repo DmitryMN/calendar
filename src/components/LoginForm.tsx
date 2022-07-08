@@ -4,10 +4,14 @@ import { rules } from '../utils/rules';
 
 
 const LoginForm: React.FC = () => {
+    const submit = () => {
+        console.log("submit");
+    }
     return (
         <Form
             name="basic"
-            labelCol={{ span: 10, }}>   
+            labelCol={{ span: 10, }}
+            onFinish={submit}>   
             <Form.Item
                 label="Имя пользователя"
                 name="username"
