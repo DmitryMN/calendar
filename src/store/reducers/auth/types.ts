@@ -14,32 +14,24 @@ export enum ACTIONS_TYPE {
     SET_ERROR = 'AUTH/SET_ERROR',
 }
 
-export type SetAuthAction = {
-    type: ACTIONS_TYPE.IS_AUTH
-    payload: {
-        isAuth: boolean
-    }
+export type SetAuthActionType = {
+    type: ACTIONS_TYPE.IS_AUTH;
+    payload: boolean;
 }
 
-export type SetUser = {
-    type: ACTIONS_TYPE.SET_USER,
-    payload: {
-        user: IUser
-    }
+export type SetUserType = {
+    type: ACTIONS_TYPE.SET_USER;
+    payload: IUser;
 }
 
-export type SetIsLoading = {
-    type: ACTIONS_TYPE.SET_IS_LOADING,
-    payload: {
-        isLoading: boolean
-    }
+export type SetIsLoadingType = {
+    type: ACTIONS_TYPE.SET_IS_LOADING;
+    payload: boolean;
 }
 
-export type SetError = {
-    type: ACTIONS_TYPE.SET_ERROR,
-    payload: {
-        error: string
-    }
+export type SetErrorType = {
+    type: ACTIONS_TYPE.SET_ERROR;
+    payload: string;
 }
 
-export type ActionsTypes = SetAuthAction | SetUser | SetIsLoading | SetError;
+export type ActionsTypes = SetAuthActionType | SetUserType | SetIsLoadingType | SetErrorType;
