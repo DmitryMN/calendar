@@ -26,7 +26,7 @@ export type SetUserType = {
 
 export type SetIsLoadingType = {
     type: ACTIONS_TYPE.SET_IS_LOADING;
-    payload: boolean;
+    payload: boolean
 }
 
 export type SetErrorType = {
@@ -34,4 +34,4 @@ export type SetErrorType = {
     payload: string;
 }
 
-export type ActionsTypes = SetAuthActionType | SetUserType | SetIsLoadingType | SetErrorType;
+export type ActionsTypes2 = SetAuthActionType | SetUserType | SetIsLoadingType | SetErrorType;

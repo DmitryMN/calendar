@@ -1,11 +1,16 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { rules } from '../utils/rules';
-
+import { useDispatch } from 'react-redux';
+import { loginTC } from '../store/reducers/auth';
+import { ActionsTypes1 } from '../store/reducers/auth';
 
 const LoginForm: React.FC = () => {
+
+    const dispatch = useDispatch();
+
     const submit = () => {
-        console.log("submit");
+        dispatch(loginTC("s","s"));
     }
     return (
         <Form
