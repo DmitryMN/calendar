@@ -3,14 +3,16 @@ import { Form, Input, Button } from 'antd';
 import { rules } from '../utils/rules';
 import { useDispatch } from 'react-redux';
 import { loginTC } from '../store/reducers/auth';
-import { ActionsTypes1 } from '../store/reducers/auth';
+import {RootState} from "../store";
+import { ThunkDispatch } from 'redux-thunk';
+import {Action} from "redux";
 
 const LoginForm: React.FC = () => {
-
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<ThunkDispatch<RootState, {}, Action<string>>>();
 
     const submit = () => {
-        dispatch(loginTC("s","s"));
+        dispatch(loginTC("s", "s"));
+        console.log("ss");
     }
     return (
         <Form

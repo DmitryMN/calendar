@@ -4,7 +4,7 @@ export type AuthState = {
     isAuth: boolean
     user: IUser
     isLoading: boolean
-    error: string
+    error?: string
 }
 
 export enum ACTIONS_TYPE {

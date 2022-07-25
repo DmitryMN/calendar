@@ -1,7 +1,11 @@
 import { AuthState, ACTIONS_TYPE, ActionsTypes2 } from "./types";
 import { IUser } from "../../../models/IUser";
-import { Dispatch } from "redux";
+import {Action, AnyAction, Dispatch} from "redux";
 import axios from "axios"
+import { ThunkAction } from "redux-thunk";
+import {RootState} from "../../index";
+import {Context} from "react";
+import {ReactReduxContextValue} from "react-redux/es/components/Context";
 
 
 const initialState: AuthState = {
@@ -50,14 +54,15 @@ export const setError = (error: string) => ({
 } as const);
 
 // types
-export type ActionsTypes1 = ReturnType<typeof setIsAuth> | ReturnType<typeof setUser> | ReturnType<typeof setIsLoading> | ReturnType<typeof setError>;
+type ThunkDispatch = Dispatch<ActionsTypes2>
+
 
 // thunk
 export const loginTC = (username: string, password: string) => {
-    return (dispatch: Dispatch<ActionsTypes2>) => {
+    return async (dispatch: ThunkDispatch) => {
         dispatch(setIsLoading(true));
-        const mockUser = axios.get('./users.json').then(data => data.data);
-        console.log(mockUser);
+        const mockUser =  await axios.get('./users.json');
+        console.log(mockUser.data);
     }
 }
 
