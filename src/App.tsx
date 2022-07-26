@@ -4,13 +4,14 @@ import Navbar from './components/Navbar';
 import './App.css';
 import { Layout } from 'antd';
 
+
 const App: React.FC = () => {
   return (
     <Layout>
       <Navbar />
       <Layout.Content>
-      <AppRouter />
-      </Layout.Content>      
+        <AppRouter />
+      </Layout.Content>
     </Layout>
   )
 }

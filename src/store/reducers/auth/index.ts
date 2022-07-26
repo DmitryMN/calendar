@@ -3,8 +3,8 @@ import { AuthState, ACTIONS_TYPE, AuthActionsType } from "./types";
 const initialState: AuthState = {
     isAuth: false,
     user: {
-        username: "alex",
-        password: "123"
+        username: "",
+        password: ""
     },
     isLoading: false,
     error: "",

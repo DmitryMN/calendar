@@ -2,7 +2,7 @@ import React from "react";
 import { Login } from "../pages/Login";
 import { Event } from "../pages/Event";
 
-export interface IRoute {
+export type IRoute = {
     path: string;
     element: React.ComponentType;
 }
