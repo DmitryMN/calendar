@@ -34,4 +34,4 @@ export type SetErrorType = {
     payload: string;
 }
 
-export type ActionsTypes2 = SetAuthActionType | SetUserType | SetIsLoadingType | SetErrorType;
+export type AuthActionsType = SetAuthActionType | SetUserType | SetIsLoadingType | SetErrorType;

@@ -2,18 +2,18 @@ import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { rules } from '../utils/rules';
 import { useDispatch } from 'react-redux';
-import { loginTC } from '../store/reducers/auth';
-import {RootState} from "../store";
-import { ThunkDispatch } from 'redux-thunk';
-import {Action} from "redux";
+import { AppDispatch } from '../store';
+import { authActionCreators } from '../store/reducers/auth/action-creators';
 
 const LoginForm: React.FC = () => {
-    const dispatch = useDispatch<ThunkDispatch<RootState, {}, Action<string>>>();
+    
+    const dispatch = useDispatch<AppDispatch>();
 
     const submit = () => {
-        dispatch(loginTC("s", "s"));
+        dispatch(authActionCreators.login("s", "s"));
         console.log("ss");
     }
+
     return (
         <Form
             name="basic"
