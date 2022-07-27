@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import { rules } from '../utils/rules';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../store';
-import { authActionCreators } from '../store/reducers/auth/action-creators';
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useActions } from '../hooks/useActions';
 
 const LoginForm: React.FC = () => {
 
     const { error, isLoading } = useTypedSelector(state => state.isAuth);
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
-    
-    const dispatch = useDispatch<AppDispatch>();
+    const {login} = useActions();
 
     const submit = () => {
-        dispatch(authActionCreators.login(username, password));
+        login(username, password);
     }
 
     return (

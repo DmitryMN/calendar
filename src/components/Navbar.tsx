@@ -4,22 +4,19 @@ import { Menu, Row } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { RouteNames } from '../router';
 import { useTypedSelector } from '../hooks/useTypedSelector';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../store';
-import { authActionCreators } from '../store/reducers/auth/action-creators';
+import { useActions } from '../hooks/useActions';
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
-    const { isAuth } = useTypedSelector(state => state.isAuth);
-
-    const dispatch = useDispatch<AppDispatch>();
+    const { isAuth, user } = useTypedSelector(state => state.isAuth);
+    const {logout} = useActions();
 
     const handlerLogin = () => {
         navigate(RouteNames.EVENT, { replace: true });
     }
 
     const handlerLogOut = () => {
-        dispatch(authActionCreators.logout());
+        logout();
     }
 
     return (
@@ -29,7 +26,7 @@ const Navbar: React.FC = () => {
                     isAuth
                         ?
                         <>
-                            <div style={{ color: "white" }}>M DM</div>
+                            <div style={{ color: "white" }}>{user.username}</div>
                             <Menu mode="horizontal" theme="dark" selectable={false}>
                                 <Menu.Item key="login" onClick={handlerLogOut}>Выйти</Menu.Item>
                             </Menu>
