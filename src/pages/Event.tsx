@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EventCalendar from '../components/EventCalendar';
 import { Button, Modal, Row } from 'antd';
+import EventForm from '../components/EventForm';
 
 
 export const Event: React.FC = () => {
@@ -18,7 +19,7 @@ export const Event: React.FC = () => {
         <Button onClick={() => {setIsModalVisible(true)}}>Добавить событие</Button>
       </Row>
       <Modal title="Добавить событие" visible={isModalVisible} footer={null} onCancel={() => {setIsModalVisible(false)}}>
-        <p>Some contents...</p>
+        <EventForm />
       </Modal>
     </div>
   )
