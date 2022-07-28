@@ -1,6 +1,7 @@
 import { IEvent } from "../../../models/IEvent";
 import { IUser } from "../../../models/IUser";
 import { EventActions } from "./types";
+import {Dispatch} from "redux";
 
 
 export const eventActionCreators = {
@@ -12,5 +13,12 @@ export const eventActionCreators = {
     setEvents: (events: IEvent[]) => ({
         type: EventActions.SET_EVENTS,
         payload: events,
-    }),    
+    }),
+    fetchUsers: () => async (dispatch: any) => {
+        try {
+
+        } catch (e) {
+
+        }
+    }
 }
