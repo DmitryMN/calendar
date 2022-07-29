@@ -2,7 +2,7 @@ import { IUser } from "../../../models/IUser";
 import { IEvent } from "../../../models/IEvent";
 
 export type EventState = {
-    quests: IUser[];
+    guests: IUser[];
     events: IEvent[];
 }
 
