@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import EventCalendar from '../components/EventCalendar';
 import { Button, Modal, Row } from 'antd';
 import EventForm from '../components/EventForm';
+import { useActions } from '../hooks/useActions';
 
 
 export const Event: React.FC = () => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const {fetchUsers} = useActions();
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
   const openCloseModal = (value: boolean) => {
     setIsModalVisible(value);

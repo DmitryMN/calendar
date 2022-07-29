@@ -1,8 +1,8 @@
 import { ACTIONS_TYPE } from './types';
 import { IUser } from '../../../models/IUser';
-import axios from 'axios';
 import { Dispatch } from 'redux';
-import { AppAction } from '../..';
+import { AppAction } from '../../index';
+import { userApi } from '../../../api/UserApi';
 
 
 export const authActionCreators = {
@@ -29,8 +29,8 @@ export const authActionCreators = {
         try {
             dispatch(authActionCreators.setIsLoading(true));
             setTimeout(async () => {
-                const responce = await axios.get<IUser[]>('./users.json');
-                const mockUser = responce.data.find(user => user.username === username && user.password === password);
+                const response = await userApi.getUsers();
+                const mockUser = response.data.find(user => user.username === username && user.password === password);
                 if (mockUser) {
                     localStorage.setItem('auth', 'true');
                     localStorage.setItem('username', mockUser.username);
