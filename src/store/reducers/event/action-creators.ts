@@ -23,6 +23,18 @@ export const eventActionCreators = {
         } catch (e) {
             console.log(e);
         }
+    },
+
+    createEvent: (event: IEvent) => async (dispatch: ThunkDispatch) => {
+        try {
+            const events = localStorage.getItem('events') || '[]';
+            const json = JSON.parse(events) as IEvent[];
+            json.push(event);
+            dispatch(eventActionCreators.setEvents(json));
+            localStorage.setItem('events', JSON.stringify(json));
+        } catch(e) {
+            console.log();
+        }
     }
 }
 

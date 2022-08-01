@@ -5,9 +5,11 @@ import { rules } from '../utils/rules';
 import { IEvent } from '../models/IEvent';
 import { Moment } from 'moment';
 import { formatDate } from '../utils/formatDate';
+import {useTypedSelector} from '../hooks/useTypedSelector';
 
 type EventFormPropsType = {
-    guests: IUser[]
+    guests: IUser[];
+    submit: (event: IEvent) => void;
 }
 
 const EventForm: React.FC<EventFormPropsType> = (props) => {
@@ -19,6 +21,8 @@ const EventForm: React.FC<EventFormPropsType> = (props) => {
         description: '',
     });
 
+    const {user} = useTypedSelector(state => state.isAuth);
+
     const selectHandler = (guest: string) => {
         setEvent({ ...event, guest });
     }
@@ -29,12 +33,16 @@ const EventForm: React.FC<EventFormPropsType> = (props) => {
 
     const selectDate = (date: Moment | null) => {
         if(date) {
-            console.log(formatDate(date?.toDate()));
+            setEvent({...event, date: formatDate(date?.toDate())});
         }
     }
 
+    const submitForm = () => {
+        props.submit({...event, author: user.username});
+    }
+
     return (
-        <Form>
+        <Form onFinish={submitForm}>
             <Form.Item
                 label="Описание события"
                 name="discription"

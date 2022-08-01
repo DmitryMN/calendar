@@ -28,7 +28,7 @@ export const Event: React.FC = () => {
         <Button onClick={() => {setIsModalVisible(true)}}>Добавить событие</Button>
       </Row>
       <Modal title="Добавить событие" visible={isModalVisible} footer={null} onCancel={() => {setIsModalVisible(false)}}>
-        <EventForm guests={guests}/>
+        <EventForm guests={guests} submit={() => {}}/>
       </Modal>
     </div>
   )
