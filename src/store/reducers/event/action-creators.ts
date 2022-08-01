@@ -35,7 +35,18 @@ export const eventActionCreators = {
         } catch(e) {
             console.log();
         }
-    }
+    },
+
+    fetchEvents: (username: string) => async (dispatch: ThunkDispatch) => {
+        try {
+            const events = localStorage.getItem('events') || '[]';
+            const json = JSON.parse(events) as IEvent[];
+            const currentUserEvents = json.filter((ev) => ev.author === username || ev.guest === username);
+            dispatch(eventActionCreators.setEvents(currentUserEvents));
+        } catch (e) {
+            console.log(e);
+        }
+    },
 }
 
 type ThunkDispatch = Dispatch<AppAction>;
