@@ -13,9 +13,11 @@ export const Event: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { fetchUsers, createEvent, fetchEvents } = useActions();
   const { guests, events } = useTypedSelector(state => state.event);
+  const {user} = useTypedSelector(state => state.isAuth);
 
   useEffect(() => {
     fetchUsers();
+    fetchEvents(user.username);
   }, []);
 
   const openCloseModal = (value: boolean) => {
@@ -29,8 +31,7 @@ export const Event: React.FC = () => {
 
   return (
     <Layout>
-      {JSON.stringify(events)}
-      <EventCalendar events={[]} />
+      <EventCalendar events={events} />
       <Row justify="center">
         <Button onClick={() => { setIsModalVisible(true) }}>Добавить событие</Button>
       </Row>
